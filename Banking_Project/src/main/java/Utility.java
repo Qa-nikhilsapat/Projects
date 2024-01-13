@@ -1,17 +1,17 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 public class Utility {
 
-	WebDriver driver;
-	Action action;
+	public static WebDriver driver=null;
+	public static Actions action=null;
 
 	public void click(WebElement click) {
 		click.click();
 	}
 	
-	public void dragAndDrop(Action act) {
-		action.
+	public void dragAndDrop(WebElement src,WebElement target) {
+		action.moveToElement(src).dragAndDrop(src, target).build().perform();;
 	}
 }
