@@ -1,10 +1,9 @@
 package testScripts;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import collection.Arraylist;
 
 public class All {
 	static Select select;
@@ -67,14 +68,19 @@ public class All {
 		Assert.assertEquals(Expected.getText(),"Deposit Successful");
 		//transaction button
 		driver.findElement(By.xpath("//*[@class='center'][2]//button[1]")).click();
+		//converting transaction values into int
+		List<Integer> List = new ArrayList<Integer>();
 		
 		List<WebElement> transaction = driver.findElements(By.cssSelector(".table-bordered>tbody>tr :nth-of-type(2)"));
 		
-//		for(WebElement amounts: transaction) {
-//			int value =Integer.parseInt(amounts);
-//			System.out.println(parseInt(amounts));
-//		}
-		
+		int total= 4000;
+		for(WebElement amounts: transaction) {
+			int  value =Integer.parseInt(amounts.getText());
+			System.out.println(amounts);
+		}
+		Assert.assertTrue(total==4000);
+		Assert.assertEquals(4000, total);
+		//List.add(value);
 		
 		 
 		

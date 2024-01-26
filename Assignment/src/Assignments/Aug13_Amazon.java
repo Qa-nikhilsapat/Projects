@@ -10,7 +10,7 @@ public class Aug13_Amazon {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-		System.setProperty("webdriver.chrome.driver", ".\\Executibles\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", ".\\Executibles\\chromedriver.exe");
 		WebDriver driver =new ChromeDriver();
 		driver.get("https://www.amazon.in/");
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
