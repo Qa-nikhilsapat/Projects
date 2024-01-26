@@ -18,7 +18,7 @@ import collection.Arraylist;
 
 public class All {
 	static Select select;
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException, InterruptedException {
 
 		WebDriver driver = new EdgeDriver();
 		driver.manage().window().maximize();
@@ -65,23 +65,29 @@ public class All {
 			DepositButton.click();
 		}
 		WebElement Expected =driver.findElement(By.xpath("//*[text()='Deposit Successful']"));
+		System.out.println("Succesfull Deposit Message"+Expected.getText());
 		Assert.assertEquals(Expected.getText(),"Deposit Successful");
 		//transaction button
 		driver.findElement(By.xpath("//*[@class='center'][2]//button[1]")).click();
 		//converting transaction values into int
 		List<Integer> List = new ArrayList<Integer>();
-		
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table-bordered>tbody>tr :nth-of-type(2)")));
 		List<WebElement> transaction = driver.findElements(By.cssSelector(".table-bordered>tbody>tr :nth-of-type(2)"));
-		
+		int value = 0;
 		int total= 4000;
 		for(WebElement amounts: transaction) {
-			int  value =Integer.parseInt(amounts.getText());
-			System.out.println(amounts);
+			  
+			System.out.println(amounts.getText());
 		}
+		
+		List.add(value);
+		System.out.println(value);
 		Assert.assertTrue(total==4000);
 		Assert.assertEquals(4000, total);
 		//List.add(value);
-		
+		System.out.println("end");
+		Thread.sleep(4000);
+		driver.close();
 		 
 		
 		
