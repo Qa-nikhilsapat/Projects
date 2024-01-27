@@ -73,17 +73,19 @@ public class All {
 		List<Integer> List = new ArrayList<Integer>();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".table-bordered>tbody>tr :nth-of-type(2)")));
 		List<WebElement> transaction = driver.findElements(By.cssSelector(".table-bordered>tbody>tr :nth-of-type(2)"));
+		
 		int value = 0;
 		int total= 4000;
 		for(WebElement amounts: transaction) {
-			  
+			
+			  value =Integer.parseInt(amounts.getText());
 			System.out.println(amounts.getText());
 		}
 		
-		List.add(value);
+		//List.addAll(value);
 		System.out.println(value);
 		Assert.assertTrue(total==4000);
-		Assert.assertEquals(4000, total);
+		//Assert.assertEquals(4000, total);
 		//List.add(value);
 		System.out.println("end");
 		Thread.sleep(4000);
